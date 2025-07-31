@@ -1,0 +1,13 @@
+.TaskField {
+    width: 100%;
+}
+
+.taskName {
+
+    height: 50px;
+    background-color: red;
+    color: white;
+    display: flex;
+    padding: 0 15px;
+    align-items: center;
+}
