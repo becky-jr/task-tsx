@@ -16,8 +16,9 @@
 }
 
 .inputBox:focus {
-	box-shadow: 0 10px 1000px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 10px 1000px rgba(0, 0, 0, 0.8);
 	outline: none;
+	/* border: 10px solid black; */
 }
 
 .inputSubmit {
@@ -41,4 +42,10 @@
 .inputSubmit:active {
 	transform: scale(0.8);
 	box-shadow: 0 0 5px black;
+}
+
+
+.InputField {
+	width: 600px;
+	margin: 0 auto;
 }

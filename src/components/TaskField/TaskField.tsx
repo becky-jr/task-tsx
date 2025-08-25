@@ -1,22 +1,35 @@
-import './TaskField.css'
 
-interface TaskName {
-    taskText: string;
+import './TaskField.css'
+import type { Todo } from '../../model';
+import SingleTodo from '../SingleTodo/SingleTodo';
+
+
+
+interface taskProps {
+    todos: Todo[];
+    setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
 }
 
-const TaskField = ({ taskText }: TaskName) => {
+
+
+
+const TaskField = ({ todos, setTodos }: taskProps) => {
+
+
+
+
 
 
 
 
     return (
-        <div className='TaskField'>
-
-            <div className="taskName">
-                {taskText}
-            </div>
-
-        </div>
+        todos.map((todo) => (
+            <SingleTodo 
+            key={todo.id} 
+            todo={todo}
+            todos={todos}
+            setTodos={setTodos}/>
+        ))
     )
 }
 

@@ -1,38 +1,42 @@
-import { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import './InputField.css'
 
 
 interface InputProps {
-    addTask: (task: string) => void
+    todo: string;
+
+    setTodo: React.Dispatch<React.SetStateAction<string>>;
+    handleAdd: (e: React.FormEvent) => void
 }
 
 
-const InputField = ({ addTask }: InputProps) => {
+const InputField = ({ todo, setTodo, handleAdd }: InputProps) => {
 
     const [inputValue, setInputValue] = useState('')
 
 
+
+    const inputRef = useRef<HTMLInputElement>(null)
 
 
 
 
 
     return (
-        <div>
+        <div className='InputField'>
 
             <form
                 action=""
                 className="input"
                 onSubmit={(e) => {
-                    e.preventDefault();
-                    if (!inputValue.trim()) return;
-                    addTask(inputValue);
-                    setInputValue('');
+                    handleAdd(e)
+                    inputRef.current?.blur();
                 }}>
                 <input
-                    onChange={(e) => setInputValue(e.target.value)}
-
-                    value={inputValue}
+                    // onChange={(e) => setInputValue(e.target.value)}
+                    ref={inputRef}
+                    value={todo}
+                    onChange={(e) => setTodo(e.target.value)}
                     type="text"
                     placeholder="Task"
                     className="inputBox" />
@@ -44,3 +48,5 @@ const InputField = ({ addTask }: InputProps) => {
 }
 
 export default InputField
+
+
